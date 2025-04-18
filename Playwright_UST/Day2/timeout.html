@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeOut</title>
+    <script>
+        function btnclick() {
+            alert('Button Clicked')
+        }
+        function inter() {
+            console.log("Hi new member")
+        }
+    </script>
+</head>
+<body>
+    <!--SetTimeOut for event action performed-->
+    <button onclick="time =setTimeout(btnclick,3000)">TimeOut</button>
+    <br>
+    <br>
+    <button onclick="clearTimeout(time)">Stop Time</button>
+    <br>
+    <br>
+    <!--setInterval for event action performed-->
+    <button onclick="find = setInterval(inter,3000)">Interval</button>
+    <br>
+    <br>
+    <button onclick="clearInterval(find)">Stop Interval</button>
+</body>
+</html>

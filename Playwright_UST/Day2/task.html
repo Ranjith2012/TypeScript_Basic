@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form </title>
+    <link rel="stylesheet" href="./task.css">
+    <script src ="./task.js"></script>
+</head>
+
+<body>
+    <div>
+        <h2>Register Form</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <br>
+        <input type="number" id="age" placeholder="Age" required>
+        <br>
+        <input type="text" id="role" placeholder="Role" required>
+        <br> 
+        <input type="number" id="salary" placeholder="Salary" required>
+        <br>
+        <input type="email" id="email" placeholder="Email" required>
+        <br>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <br>
+        <button type="submit" onclick="validate()">Submit</button>
+    </div>
+
+    <div>
+        <h1 id="result"></h1>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+.head{
+    color: aqua;
+}
+#content{
+    color: blueviolet;
+}
+h1{
+    color: blueviolet;
+}
+#my1{
+    color: chartreuse;
+    width: 110px;
+    height: 40px;
+    border-radius: 10px;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function pressing(){
+            alert("clicked")
+        }
+    </script>
+</head>
+<body onload="alert('page loaded')">
+    <!---Button Clicked event-->
+    <button 
+    onclick="this.innerHTML = Date()">
+    The time is :</button>
+    <br>
+    <br>
+    <!--- Mouse enter / mouse leave event-->
+    <button 
+    onmouseenter="this.innerHTML='Mouse Entered'"
+    onmouseleave="this.innerHTML='Mouse Leave'">Mouse</button>
+    <!--- Key pressing Event-->
+    <input type="text" onkeydown="pressing()"/>
+</body>
+</html>
