@@ -20,6 +20,8 @@ type Vendor1 = {
     console.log(`Id ${e.id} name ${e.name}`));
 
 
+  // It's show error certification issue
+  
 // function getFacts(url: string): Promise<Response> {
 //     return fetch(url).then(res => res.json());
 // }
