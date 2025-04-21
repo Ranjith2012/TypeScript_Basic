@@ -45,5 +45,5 @@ var database1 = [
 var sort1 = database1.sort(function (e1, e2) { return e1.user_id > e2.user_id ? -1 : 0; });
 for (var _i = 0, sort1_1 = sort1; _i < sort1_1.length; _i++) {
     var vendor = sort1_1[_i];
-    console.log("ID: ".concat(vendor.user_id, ", Name: ").concat(vendor.name, ", Role: ").concat(vendor.role != undefined ? vendor.name + " " : vendor.name));
+    console.log("ID: ".concat(vendor.user_id, ", Name: ").concat(vendor.name, ", Role: ").concat(vendor.role != undefined ? " " : vendor.role));
 }

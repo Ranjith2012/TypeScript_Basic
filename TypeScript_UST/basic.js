@@ -15,6 +15,7 @@
 //   }
 //   sortvendors().forEach((e)=> 
 //     console.log(`Id ${e.id} name ${e.name}`));
+// It's show error certification issue
 function getFacts(url) {
     return fetch(url).then(function (res) { return res.json(); });
 }

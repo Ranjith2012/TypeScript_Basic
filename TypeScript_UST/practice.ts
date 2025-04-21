@@ -60,16 +60,17 @@ showcompany1()
 showcompany2()
 
 
-const database1:compnay1[] = [
+const database1: compnay1[] = [
     new compnay1(2,"user1","dep1"),
-    new compnay1(2,"user1","dep1"),
-    new compnay1(2,"user1","dep1")
+    new compnay1(2,"user2","dep1"),
+    new compnay1(2,"user3","new")
 ]
 
 
 const sort1 = database1.sort((e1,e2)=>e1.user_id>e2.user_id ? -1: 0)
 
 for (const vendor of sort1) {
-    console.log(`ID: ${vendor.user_id}, Name: ${vendor.name}, Role: ${vendor.role != undefined ? vendor.name + " " : vendor.name}`);
+    console.log(`ID: ${vendor.user_id}, Name: ${vendor.name}, Role: ${vendor.role != undefined ? " " : vendor.role}`);
 }
+
 
