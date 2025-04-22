@@ -10,3 +10,15 @@ var emp = {
 };
 console.log(emp.details("John Doe"));
 console.log(emp.details(30));
+var product1 = {
+    products: function (idOrName) {
+        if (typeof idOrName === "number") {
+            return "ID of product is ".concat(idOrName);
+        }
+        else {
+            return "Product name is ".concat(idOrName);
+        }
+    }
+};
+console.log(product1.products(101));
+console.log(product1.products("Laptop"));
