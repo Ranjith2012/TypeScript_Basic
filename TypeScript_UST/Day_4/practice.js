@@ -8,6 +8,7 @@ function dis2() {
 }
 dis1();
 dis2();
+
 var user1 = {
     user_id: 2,
     name: "rash",
