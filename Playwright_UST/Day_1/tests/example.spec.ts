@@ -1,7 +1,6 @@
 import {test, expect} from "@playwright/test";
 
 test ("Title Verification",async ({page})=>{
-    test.setTimeout(1000);
     await page.goto("https://www.typescriptlang.org/");
     await expect(page).toHaveTitle(/TypeScript/);
 })
@@ -15,7 +14,7 @@ test("Click Try Button",async({page})=>{
 })
 
 
-//positive testCase
+//positive testCase for login
 test("validate the login functionality",async({page})=>{
   await page.goto("https://www.saucedemo.com/");
   await page.fill("#user-name","standard_user");
@@ -24,8 +23,8 @@ test("validate the login functionality",async({page})=>{
   await expect(page.locator(".app_logo")).toBeVisible();
 })
 
-//Neagative test case
-test.only("validate the Invalid login functionality",async({page})=>{
+//Neagative test case for login
+test("validate the Invalid login functionality",async({page})=>{
   await page.goto("https://www.saucedemo.com/");
   await page.fill("#user-name","standard_user");
   await page.fill("#password","new");
@@ -45,8 +44,13 @@ test("Download Button verification",async({page})=>{
 
 test("Validate the search Bar Functinalities", async({page})=>{
   await page.goto("https://www.typescriptlang.org/");
-  const searchBar = page.getByPlaceholder("Search Docs");
+  const searchBar = await page.getByRole('combobox');
   await searchBar.fill("What is a tsconfig.json");
+  await page.waitForTimeout(2000);
   await searchBar.press("Enter");
-  await page.waitForSelector('text=tsconfig.json');
+  await page.waitForTimeout(2000);
+  await expect(
+    page.getByRole('heading', { name: 'What is a tsconfig.json' })
+  ).toBeVisible();
+  await page.waitForTimeout(5000);  
 })
