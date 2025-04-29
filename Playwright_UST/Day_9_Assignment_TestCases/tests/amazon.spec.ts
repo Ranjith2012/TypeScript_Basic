@@ -32,15 +32,16 @@ test.describe("Amazon Best Sellers", () => {
 
     const pincodeTests = [
         { pincode: "641402", expected: true },
+        { pincode: "64140", expected: false },
+        { pincode: "123345", expected: false },
+        { pincode: "682001", expected: true },
     ];
     
     pincodeTests.forEach(({pincode, expected}) => {
         test(`verify user can enter pincode ${pincode}`, async ({ sellerPage }) => {
             await sellerPage.userClickLocationBar();
             await sellerPage.userEnterPincode(pincode);
-            let isValid = await sellerPage.validatePincode();
-            console.log(isValid);
-            expect(isValid).toBe(expected);
+            await expect(await sellerPage.validatePincode()).toBe(expected);
         });
     });
 
@@ -58,7 +59,6 @@ test.describe("Amazon Best Sellers", () => {
         await sellerPage.fillDataInSearchbar("iphone");
         await sellerPage.userClickSearchIcon();
     })
-
     
 
 })

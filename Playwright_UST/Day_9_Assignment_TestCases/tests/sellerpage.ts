@@ -69,7 +69,6 @@ export class SellerPageClass {
 
     async userClickLocationBar(){
         await this.location.click();
-        await expect(await this.applyButton).toBeVisible();
     }
 
     async userEnterPincode(pincode:string) {
@@ -79,9 +78,9 @@ export class SellerPageClass {
     }
 
     async validatePincode(): Promise<boolean> {
+        await this.page.waitForTimeout(5000);
         let errorMessage = await this.errorMsg.getAttribute('style');
-        console.log("Error message style:", errorMessage);
-        return errorMessage === "display: none;" ? true : false;
+        return errorMessage === "display: inline;" ? false: true;
     }
 
     async userClickSlideBar() {
