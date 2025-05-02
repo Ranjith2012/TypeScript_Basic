@@ -3,14 +3,14 @@ import path from 'path';
 import fs from 'fs';
 import { Certificate } from 'crypto';
 
-const authFile = path.join(__dirname, '../tests/data.json');
-const credentials = JSON.parse(fs.readFileSync(authFile, 'utf-8'));
+const authFile = path.join(__dirname, '../playwright/.auth/user.json');
+const { username, password } = JSON.parse(fs.readFileSync(authFile, 'utf-8'));
 
 setup('authenticate', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.
   await page.goto('https://github.com/login');
-  await page.getByLabel('Username or email address').fill(credentials.username);
-  await page.getByLabel('Password').fill(credentials.password);
+  await page.getByLabel('Username or email address').fill(username);
+  await page.getByLabel('Password').fill(password);
   await page.locator('[value="Sign in"]').click();
 
   // Wait until the page receives the cookies.
