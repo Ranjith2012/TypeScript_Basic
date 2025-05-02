@@ -6,3 +6,9 @@ test('has title', async ({ page }) => {
   console.log('hello');
 });
 
+test('Title is correct', async ({ page }) => {
+  // await page.goto('https://github.com/');
+  // await expect(await page.locator('#dashboard')).toBeVisible();
+  console.log('h');
+});
+
