@@ -5,3 +5,6 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/cart.html/
+/checkout.html/
+/ordersuccesspage.html/
