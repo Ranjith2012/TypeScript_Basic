@@ -1,26 +1,73 @@
 // Sample product data
 const products = [
     {
-      id: 1,
-      title: "Product 1",
-      description: "This is a short description of Product 1.",
-      price: "$19.99"
-    },
-    {
-      id: 2,
-      title: "Product 2",
-      description: "This is a short description of Product 2.",
-      price: "$29.99"
-    },
-    {
-      id: 3,
-      title: "Product 3",
-      description: "This is a short description of Product 3.",
-      price: "$15.00"
-    }
+        "id": 1,
+        "title": "Face Cream",
+        "description": "A moisturizing face cream for daily use to keep your skin smooth and hydrated.",
+        "price": "$24.99"
+      },
+      {
+        "id": 2,
+        "title": "Lipstick",
+        "description": "Long-lasting and smooth lipstick in various shades to match your style.",
+        "price": "$14.99"
+      },
+      {
+        "id": 3,
+        "title": "Eye Shadow Palette",
+        "description": "A variety of bold and neutral shades for every occasion.",
+        "price": "$29.99"
+      },
+      {
+        "id": 4,
+        "title": "Foundation",
+        "description": "Lightweight foundation with buildable coverage for a flawless complexion.",
+        "price": "$34.99"
+      },
+      {
+        "id": 5,
+        "title": "Mascara",
+        "description": "Volume-boosting mascara for fuller lashes that last all day.",
+        "price": "$18.99"
+      },
+      {
+        "id": 6,
+        "title": "Blush",
+        "description": "A soft, blendable blush that gives your cheeks a natural flush of color.",
+        "price": "$16.99"
+      },
+      {
+        "id": 7,
+        "title": "Nail Polish",
+        "description": "High-gloss, chip-resistant nail polish available in a variety of vibrant colors.",
+        "price": "$9.99"
+      },
+      {
+        "id": 8,
+        "title": "Face Mask",
+        "description": "Revitalizing face mask to hydrate and refresh your skin.",
+        "price": "$22.99"
+      }
+
   ];
   
-  // Function to create a product card element
+
+  function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  }
+  
+
+  function updateCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+  }
+  
+  function updateCartCount() {
+    const cart = getCart();
+    document.getElementById("cartCount").textContent = cart.length;
+  }
+  
+
   function createProductCard(product) {
     const card = document.createElement("div");
     card.className = "product-card";
@@ -39,8 +86,18 @@ const products = [
   
     const button = document.createElement("button");
     button.className = "add-to-cart-btn";
-    button.textContent = "Add to Cart";
-    button.onclick = () => addToCart(product);
+  
+
+    const cart = getCart();
+    const isProductInCart = cart.some(item => item.id === product.id);
+  
+    if (isProductInCart) {
+      button.textContent = "Remove from Cart";
+      button.onclick = () => removeFromCart(product);
+    } else {
+      button.textContent = "Add to Cart";
+      button.onclick = () => addToCart(product);
+    }
   
     card.appendChild(title);
     card.appendChild(description);
@@ -50,23 +107,45 @@ const products = [
     return card;
   }
   
-  // Simple cart array
-  const cart = [];
-  
-  // Add to cart function
+
   function addToCart(product) {
+    const cart = getCart();
     cart.push(product);
+    updateCart(cart);
     alert(`${product.title} added to cart.`);
-    // You can log or store the cart as needed
-    console.log(cart);
+    refreshProductCard(product.id);
+  }
+
+  function removeFromCart(product) {
+    let cart = getCart();
+    cart = cart.filter(item => item.id !== product.id);
+    updateCart(cart);
+    alert(`${product.title} removed from cart.`);
+    refreshProductCard(product.id);
   }
   
-  // Load products on page load
+
+  function refreshProductCard(productId) {
+    const grid = document.getElementById("productGrid");
+    const product = products.find(p => p.id === productId);
+    const oldCard = [...grid.children].find(card => {
+      return card.querySelector(".product-title").textContent === product.title;
+    });
+    const newCard = createProductCard(product);
+    grid.replaceChild(newCard, oldCard);
+  }
+  
+
   document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("productGrid");
     products.forEach(product => {
       const card = createProductCard(product);
       grid.appendChild(card);
     });
+    updateCartCount();
   });
+  
+  function navigateToCart() {
+    window.location.href = "cart.html";
+  }
   
