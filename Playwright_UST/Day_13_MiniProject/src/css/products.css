@@ -136,7 +136,14 @@ body {
     background-color: #0056b3;
 }
 
-/* Responsive Design */
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
 @media (max-width: 768px) {
     .header h2 {
         font-size: 1.8rem;

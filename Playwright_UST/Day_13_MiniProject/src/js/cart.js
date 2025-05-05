@@ -15,7 +15,7 @@ function loadCart() {
         div.innerHTML = `
         <img src="${item.image}" alt="${item.name}" />
         <div class="cart-item-details">
-          <h3 class="cart-item-title">${item.name}</h3>
+          <h3 class="cart-item-title">${item.title}</h3>
           <p class="cart-item-price">$${item.price}</p>
           <p class="cart-item-quantity">Quantity: ${item.quantity}</p>
           <button onclick="removeFromCart(${item.id})">Remove</button>
@@ -30,7 +30,10 @@ function loadCart() {
 function displayCartSummary(cart) {
     const summary = document.getElementById('cartSummary');
     const totalItems = cart.length;
-    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => {
+      const numericPrice = parseFloat(item.price.toString().replace(/[^0-9.]/g, ""));
+      return sum + numericPrice * (item.quantity || 1);
+    }, 0);
 
     summary.innerHTML = `
   <div class="card p-3">
