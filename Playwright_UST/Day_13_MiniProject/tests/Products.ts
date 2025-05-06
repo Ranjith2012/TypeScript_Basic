@@ -1,5 +1,4 @@
 import { Page, Locator, expect } from '@playwright/test';
-
 export class ProductsClass {
     private readonly cartIcon: Locator;
     private readonly cartCount: Locator;

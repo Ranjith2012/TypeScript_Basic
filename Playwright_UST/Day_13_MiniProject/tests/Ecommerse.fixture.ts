@@ -3,13 +3,13 @@ import { LoginClass } from './Login';
 import { ProductsClass } from './Products';
 import { CartClass } from './Cart';
 import { CheckOutClass } from './CheckOut';
-
-
+import { OrderClass } from './Order';
 type ecommerce = {
      login : LoginClass;
      product : ProductsClass;
      cart: CartClass;
      checkout: CheckOutClass;
+     order: OrderClass;
 };
 
 export const test = base.extend<ecommerce>({
@@ -33,6 +33,13 @@ export const test = base.extend<ecommerce>({
         const checkout = new CheckOutClass(page);
         await use(checkout)
     },
+
+    order: async ({page}, use) => {
+        const order = new OrderClass(page);
+        await use(order)
+    },
+
+
 });
 
 export {expect} from '@playwright/test';

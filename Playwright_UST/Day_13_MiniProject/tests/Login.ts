@@ -12,7 +12,7 @@ export class LoginClass {
     async gotoWebsite(url: string) {
         await this.page.goto(url);
     }
-
+    
     async verfiyUserOnLoginPage(){
         await this.page.goto('http://127.0.0.1:5500/src/loginpage.html');
         await expect(this.page).toHaveTitle(/Login Page/);

@@ -39,3 +39,11 @@ test('verify the product Count', async ({ login, product }) => {
     await product.verifyUserOnProductsPage();
     await product.verifyCartCount(0);
 });
+
+
+test('verify the cart icon', async ({ login, product }) => {
+    await login.verfiyUserOnLoginPage();
+    await login.loginWithValidCredentials('admin', 'admin123');
+    await product.verifyUserOnProductsPage();
+    await product.verifyCartIconDisplayed();
+});
