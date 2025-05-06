@@ -43,6 +43,7 @@ test('Verify Goto Home Button navigate to Products Page', async ({login, product
     await order.verifyUserOnOrderPage();
     await order.ClickGotoHomeButton();
     await expect(order.page).toHaveTitle(/Products Page/);
+    
 }); 
 
 
