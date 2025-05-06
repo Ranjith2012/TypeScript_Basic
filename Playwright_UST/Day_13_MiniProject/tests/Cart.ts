@@ -36,4 +36,12 @@ export class CartClass {
         await this.proceedToCheckoutButton.click();
     }
 
+    async removeALLProductFromCart() {
+        let buttons = await this.removeButton.all();
+        while (buttons.length > 0) {
+            await buttons[0].click(); // Always click the 0th index
+            buttons = await this.removeButton.all(); // Refresh the list after each removal
+        }
+    }
+
 }

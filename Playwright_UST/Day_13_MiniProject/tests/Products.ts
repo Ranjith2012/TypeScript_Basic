@@ -3,10 +3,12 @@ export class ProductsClass {
     private readonly cartIcon: Locator;
     private readonly cartCount: Locator;
     private readonly addtocartButton: Locator;
+    private readonly productTitle: Locator;
     constructor(public page: Page) {
         this.cartIcon = this.page.locator('#cartIcon');
         this.cartCount = this.page.locator('#cartCount');
         this.addtocartButton = this.page.locator('.add-to-cart-btn');
+        this.productTitle = this.page.locator('.product-title');
     }
 
     async verifyUserOnProductsPage() {
@@ -42,6 +44,17 @@ export class ProductsClass {
     async navigateToCart() {
         await this.cartIcon.click();
         await expect(this.page).toHaveTitle(/Cart Page/);
+    }
+
+    async verifyproductTitle(title: string):Promise<boolean>{
+        const productTitle = await this.productTitle.all();
+        for(const product of productTitle){
+            const text = await product.textContent();
+            if(text?.trim() === title){
+                return true;
+            }
+        }
+        return false;
     }
 }
 

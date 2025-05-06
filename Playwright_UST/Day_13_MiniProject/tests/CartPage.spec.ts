@@ -9,7 +9,7 @@ test('Verify user On cart page', async ({login, product, cart})=>{
 })
 
 
-test('verify total count price', async ({login, product, cart}) => {
+test('verify total price matches the total items prices', async ({login, product, cart}) => {
     await login.verfiyUserOnLoginPage();
     await login.loginWithValidCredentials('admin', 'admin123');
     await product.verifyUserOnProductsPage();
@@ -28,7 +28,7 @@ test('verify total count price', async ({login, product, cart}) => {
     
 });
 
-test('Verify the Total items count', async ({login, product, cart}) => {
+test('Verify the total items count displayed in cart page', async ({login, product, cart}) => {
     await login.verfiyUserOnLoginPage();
     await login.loginWithValidCredentials('admin', 'admin123');
     await product.verifyUserOnProductsPage();
@@ -44,7 +44,7 @@ test('Verify the Total items count', async ({login, product, cart}) => {
 });
 
 
-test('Remove product from cart', async ({login, product, cart}) => {
+test('verify user can remove product from cart', async ({login, product, cart}) => {
     await login.verfiyUserOnLoginPage();
     await login.loginWithValidCredentials('admin', 'admin123');
     await product.verifyUserOnProductsPage();
@@ -63,7 +63,7 @@ test('Remove product from cart', async ({login, product, cart}) => {
 });
 
 
-test('verify the proceed to checkout button', async ({login, product, cart}) => {
+test('verify the proceed to checkout button working', async ({login, product, cart}) => {
     await login.verfiyUserOnLoginPage();
     await login.loginWithValidCredentials('admin', 'admin123');
     await product.verifyUserOnProductsPage();
@@ -71,4 +71,17 @@ test('verify the proceed to checkout button', async ({login, product, cart}) => 
     await product.navigateToCart();
     await cart.verifyUserOnCartPage();
     await cart.ClickproceedToCheckout();
+});
+
+
+test('User remove all product from cart', async ({login, product, cart}) => {
+    await login.verfiyUserOnLoginPage();
+    await login.loginWithValidCredentials('admin', 'admin123');
+    await product.verifyUserOnProductsPage();
+    await product.addProductToCart(0);
+    await product.addProductToCart(1);
+    await product.navigateToCart();
+    await cart.verifyUserOnCartPage();
+    await cart.verifyCartItemsDisplayed();
+    await cart.removeALLProductFromCart();
 });

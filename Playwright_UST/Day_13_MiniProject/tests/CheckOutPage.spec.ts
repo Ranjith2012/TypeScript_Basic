@@ -40,6 +40,14 @@ test('Validate the user can fill the checkout details', async ({login, product, 
 });
 
 
+test('Verify the product item title present in the Product list', async ({login, product, cart, checkout}) => {
+    await login.verfiyUserOnLoginPage();
+    await login.loginWithValidCredentials('admin', 'admin123');
+    await product.verifyUserOnProductsPage();
+    await expect(await product.verifyproductTitle("Face Mask")).toBeTruthy();
+});
+
+
 
 
 
