@@ -13,6 +13,6 @@ test('User can login with Valid credentials', async ({ login,product}) => {
 
 test('User can login with InValid credentials', async ({ login }) => {
   await login.verfiyUserOnLoginPage();
-  await login.loginWithInValidCredentials('hello world', 'admin123');
+  await login.loginWithInValidCredentials('hello world123', 'admin123');
 });
 

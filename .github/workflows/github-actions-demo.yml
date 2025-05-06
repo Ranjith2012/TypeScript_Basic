@@ -40,7 +40,7 @@ jobs:
           sleep 5
 
       - name: Run Playwright tests sequentially
-        run: npx playwright test --workers=1
+        run: npx playwright test
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
