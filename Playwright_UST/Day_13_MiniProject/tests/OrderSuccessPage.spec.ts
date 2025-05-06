@@ -9,7 +9,7 @@ test('Verify user on Order Success Page', async ({login, product, cart, checkout
     await cart.verifyUserOnCartPage();
     await cart.ClickproceedToCheckout();
     await checkout.verifyUserOnCheckoutPage();
-    await checkout.UserFillCheckOutDetails('Krishna', '9486900546', 'New York', 'Credit Card');
+    await checkout.UserFillCheckOutDetails('Krishn', '9486900546', 'New York', 'Credit Card');
     await checkout.ClickplaceOrder();
     await order.verifyUserOnOrderPage();
 });
