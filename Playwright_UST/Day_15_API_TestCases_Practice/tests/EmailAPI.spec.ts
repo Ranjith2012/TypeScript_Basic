@@ -15,7 +15,6 @@ test('Email ID verification', async ({ request }) => {
   expect(resbody.email).toBe(emailID);
 });
 
-
 test('Check Email ID', async({request}) => {
   const response = await request.get(`${baseURL}/check?email=${emailID}`,{
     headers: {

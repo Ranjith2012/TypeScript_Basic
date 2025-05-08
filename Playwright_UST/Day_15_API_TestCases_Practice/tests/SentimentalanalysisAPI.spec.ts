@@ -17,7 +17,6 @@ test('Positive Sentimental analysis', async ({ request }) => {
   expect(resbody.sentiment).toBe('positive');
 });
 
-
 test('Negative Sentimental analysis', async ({ request }) => {
     const sampleText = 'I hate you';
     const response = await request.post(`${baseURL}`,{

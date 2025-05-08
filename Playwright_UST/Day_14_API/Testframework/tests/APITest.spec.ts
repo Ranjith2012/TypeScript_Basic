@@ -1,5 +1,6 @@
 import {test, expect , request } from '@playwright/test';
 let id:any;
+
 test('/ test', async ({ request }) => {
     const res = await request.get('https://api.restful-api.dev/objects');
     expect(res.ok()).toBeTruthy();
