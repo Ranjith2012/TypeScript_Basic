@@ -4,7 +4,6 @@ let id:any;
 test('/ test', async ({ request }) => {
     const res = await request.get('https://api.restful-api.dev/objects');
     expect(res.ok()).toBeTruthy();
-    const resbody = await res.json();
 });
 
 test('Create the object',async ({request}) =>{

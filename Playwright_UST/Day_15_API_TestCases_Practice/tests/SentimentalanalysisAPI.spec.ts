@@ -20,7 +20,7 @@ test('Positive Sentimental analysis', async ({ request }) => {
 
 test('Negative Sentimental analysis', async ({ request }) => {
     const sampleText = 'I hate you';
-  const response = await request.post(`${baseURL}`,{
+    const response = await request.post(`${baseURL}`,{
     headers: {
       'apikey': 'LKc1ssecwdYE1tn6vhwJ6JOBKiVGxXYa',
       'Content-Type': 'text/plain'
